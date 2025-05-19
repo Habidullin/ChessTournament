@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ChessTournament
 {
-    internal class Player
+    public class Player
     {
+        public string Name;
+        public string SurName;
+        public int ELO;
+        public Player(string name, string surname, int elo)
+        {
+            Name = name;
+            SurName = surname;
+            ELO = elo;
+        }
     }
 }
