@@ -9,9 +9,12 @@ namespace ChessTournament
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();    
+            Tournament myTournament = new Tournament(3, 2025, "TestTournament");
+            myTournament.AddGame(new Game("Alice", "Bob", 0), 0);
+            myTournament.AddGame(new Game("Charlie", "David", 1), 1);
+            string saveDirectory = "tournament_data";
+            Directory.CreateDirectory(saveDirectory);
+            myTournament.Save(saveDirectory);
         }
     }
 }

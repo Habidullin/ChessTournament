@@ -8,12 +8,13 @@ namespace ChessTournament
 {
     public class Game
     {
-        public string playerW;
-        public string playerB;
+        public string PlayerW;
+        public string PlayerB;
         public float Result;
-        Game(string playerw, string playerb, float result) {
-            playerB = playerb;
-            playerW = playerw;
+        public Game(string playerw, string playerb, float result)
+        {
+            PlayerB = playerb;
+            PlayerW = playerw;
             Result = result;
         }
 
