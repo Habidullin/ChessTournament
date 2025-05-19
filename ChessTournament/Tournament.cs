@@ -8,5 +8,7 @@ namespace ChessTournament
 {
     internal class Tournament
     {
+        Game[][] games;
+        int AmountOfRounds;
     }
 }
