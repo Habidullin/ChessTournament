@@ -12,7 +12,7 @@ namespace ChessTournament
         public List<List<Game>> Games;
         public int AmountOfRounds;
         public int Year;
-        public string Name;
+        public string Name { get; set; }
         public Tournament(int amountOfRounds, int year, string name)
         {
             AmountOfRounds = amountOfRounds;

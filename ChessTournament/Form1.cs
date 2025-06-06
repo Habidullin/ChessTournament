@@ -11,6 +11,9 @@ namespace ChessTournament
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Form2 form2 = new Form2();
+            form2.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

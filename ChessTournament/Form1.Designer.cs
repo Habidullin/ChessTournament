@@ -39,7 +39,7 @@
             Button1.Name = "Button1";
             Button1.Size = new Size(94, 29);
             Button1.TabIndex = 0;
-            Button1.Text = "View games";
+            Button1.Text = "Add game";
             Button1.UseVisualStyleBackColor = true;
             Button1.Click += button1_Click;
             // 
@@ -69,7 +69,7 @@
             Controls.Add(listBox1);
             Controls.Add(Button1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Tournament list";
             Load += Form1_Load;
             ResumeLayout(false);
         }
