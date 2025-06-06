@@ -28,32 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            Button1 = new Button();
+            listBox1 = new ListBox();
+            listBox2 = new ListBox();
             SuspendLayout();
             // 
-            // button1
+            // Button1
             // 
-            button1.Location = new Point(674, 409);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            Button1.Location = new Point(32, 322);
+            Button1.Name = "Button1";
+            Button1.Size = new Size(94, 29);
+            Button1.TabIndex = 0;
+            Button1.Text = "View games";
+            Button1.UseVisualStyleBackColor = true;
+            Button1.Click += button1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(32, 60);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(150, 124);
+            listBox1.TabIndex = 2;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.Location = new Point(251, 60);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(150, 124);
+            listBox2.TabIndex = 3;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(listBox2);
+            Controls.Add(listBox1);
+            Controls.Add(Button1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
+        private Button Button1;
+        private ListBox listBox1;
+        private ListBox listBox2;
     }
 }
