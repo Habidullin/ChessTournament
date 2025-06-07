@@ -35,7 +35,9 @@ namespace ChessTournament
                     }
                 }
             }
-            comboBox1.DataSource = allLoadedTournaments;
+            BindingSource source = new BindingSource();
+            source.DataSource = allLoadedTournaments;
+            comboBox1.DataSource = source;
             comboBox1.DisplayMember = "Name";
         }
 
@@ -48,6 +50,7 @@ namespace ChessTournament
             int round = int.Parse(textBox4.Text) - 1;
             Game game = new Game(playerW, playerB, result);
             CurrentTournament.AddGame(game, round);
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,6 +68,34 @@ namespace ChessTournament
             {
                 tournament.Save();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string tournamentName = textBox5.Text;
+            int amountOfRounds = int.Parse(textBox6.Text);
+            int year = int.Parse(textBox7.Text);
+            Tournament tournament = new Tournament(amountOfRounds, year, tournamentName);
+            allLoadedTournaments.Add(tournament);
+            comboBox1.DataSource = allLoadedTournaments;
+            comboBox1.DisplayMember = "Name";
+            allLoadedTournaments.Add(tournament);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (var tournament in allLoadedTournaments)
+            {
+                tournament.Save();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form Form1 = new Form1();
+            Form1.Show();
+
         }
     }
 }
