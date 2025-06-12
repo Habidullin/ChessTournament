@@ -51,6 +51,7 @@ namespace ChessTournament
             Game game = new Game(playerW, playerB, result);
             CurrentTournament.AddGame(game, round);
             
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace ChessTournament
                 tournament.Save();
             }
         }
+
 
         private void button4_Click(object sender, EventArgs e)
         {

@@ -247,7 +247,7 @@
             Controls.Add(comboBox1);
             Controls.Add(button1);
             Name = "Form2";
-            Text = "Form2";
+            Text = "Add";
             Load += Form2_Load;
             ResumeLayout(false);
             PerformLayout();

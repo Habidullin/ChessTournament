@@ -13,8 +13,15 @@ namespace ChessTournament
         public float Result;
         public Game(string playerw, string playerb, float result)
         {
-            PlayerB = playerb;
             PlayerW = playerw;
+            PlayerB = playerb;
+            Result = result;
+        }
+
+        public void Edit(string playerw, string playerb, float result)
+        {
+            PlayerW = playerw;
+            PlayerB = playerb;
             Result = result;
         }
 

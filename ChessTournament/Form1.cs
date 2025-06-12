@@ -40,23 +40,37 @@ namespace ChessTournament
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tournament chosenTournament = null;
-            listBox2.Items.Clear();
+            textBox1.Clear();
             foreach (var tournament in allLoadedTournaments)
             {
-                if(tournament.Name == listBox1.SelectedItem.ToString())
+                if (tournament.Name == listBox1.SelectedItem.ToString())
                 {
                     chosenTournament = tournament;
                     break;
                 }
             }
-            for (int i = 0; i < chosenTournament.AmountOfRounds; i++)
+            if (chosenTournament.Games.Count != 0)
             {
-                foreach (var game in chosenTournament.Games[i])
+                for (int i = 0; i < chosenTournament.AmountOfRounds; i++)
                 {
-                    listBox2.Items.Add($"{game.PlayerW}-{game.PlayerB} {game.Result}");
+                    foreach (var game in chosenTournament.Games[i])
+                    {
+                        textBox1.Text += $"{game.PlayerW}-{game.PlayerB} {game.Result}{Environment.NewLine}";
+                    }
                 }
             }
-            
+            else
+            {
+                textBox1.Text = $"there are no games";
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 form3 = new Form3();
+            form3.Show();
         }
     }
 }

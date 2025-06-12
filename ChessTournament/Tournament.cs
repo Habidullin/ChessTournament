@@ -18,16 +18,16 @@ namespace ChessTournament
             AmountOfRounds = amountOfRounds;
             Year = year;
             Games = new List<List<Game>>(amountOfRounds);
+            for (int i = 0; i < amountOfRounds; i++)
+            {
+                Games.Add(new List<Game>());
+            }
             Name = name;
         }
         public void AddGame(Game game, int Round)
         {
             if (Round >= 0 && Round < AmountOfRounds)
             {
-                if (Games.Count <= Round)
-                {
-                    Games.Add(new List<Game>());
-                }
                 Games[Round].Add(game);
             }
 
@@ -43,7 +43,7 @@ namespace ChessTournament
             for (int i = 0; i < Games.Count; i++)
             {
                 string roundFilePath = Path.Combine(tournamentDirectoryPath, $"games_round_{i + 1}.txt");
-                List<string> gameLines = Games[i].Select(game => $"{game.PlayerW},{game.PlayerB},{game.Result}").ToList();
+                List<string> gameLines = Games[i].Select(game => $"{game.PlayerW}-{game.PlayerB}-{game.Result}").ToList();
                 File.WriteAllLines(roundFilePath, gameLines);
             }
         }
@@ -82,15 +82,18 @@ namespace ChessTournament
                     string[] gameLines = File.ReadAllLines(roundFilePath);
                     foreach (string line in gameLines)
                     {
-                        string[] parts = line.Split(',');
+                        string[] parts = line.Split('-');
                         if (parts.Length == 3)
                         {
                             string playerW = parts[0];
                             string playerB = parts[1];
-                            if (float.TryParse(parts[2], out float resultValue))
+                            string result = parts[2];
+                            float fresult = 0.5f;
+                            if (result == "0" || result == "1")
                             {
-                                loadedTournament.AddGame(new Game(playerW, playerB, resultValue), i);
+                                fresult = float.Parse(result);
                             }
+                            loadedTournament.AddGame(new Game(playerW, playerB, fresult), i);
                         }
                     }
                 }
