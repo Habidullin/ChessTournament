@@ -140,7 +140,7 @@ namespace ChessTournament
             LoadTouraments();
             comboBoxTournaments.DataSource = null;
             comboBoxTournaments.DataSource = allLoadedTournaments;
-            LoadGames();   
+            LoadGames();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace ChessTournament
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if(selectedGame == null)
+            if (selectedGame == null)
             {
                 MessageBox.Show("No game selected");
                 return;
@@ -223,6 +223,14 @@ namespace ChessTournament
                 LoadGames();
                 ClearSelection();
             }
+        }
+
+        private void buttonBackToMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form Form1 = new Form1();
+            Form1.Show();
+
         }
     }
 }

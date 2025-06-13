@@ -40,6 +40,7 @@
             comboBoxResult = new ComboBox();
             comboBoxGames = new ComboBox();
             buttonDelete = new Button();
+            buttonBackToMain = new Button();
             SuspendLayout();
             // 
             // buttonEdit
@@ -75,7 +76,7 @@
             // comboBoxTournaments
             // 
             comboBoxTournaments.FormattingEnabled = true;
-            comboBoxTournaments.Location = new Point(41, 46);
+            comboBoxTournaments.Location = new Point(41, 68);
             comboBoxTournaments.Name = "comboBoxTournaments";
             comboBoxTournaments.Size = new Size(425, 28);
             comboBoxTournaments.TabIndex = 3;
@@ -137,7 +138,7 @@
             // comboBoxGames
             // 
             comboBoxGames.FormattingEnabled = true;
-            comboBoxGames.Location = new Point(42, 118);
+            comboBoxGames.Location = new Point(42, 133);
             comboBoxGames.Name = "comboBoxGames";
             comboBoxGames.Size = new Size(424, 28);
             comboBoxGames.TabIndex = 11;
@@ -153,11 +154,22 @@
             buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
+            // buttonBackToMain
+            // 
+            buttonBackToMain.Location = new Point(31, 12);
+            buttonBackToMain.Name = "buttonBackToMain";
+            buttonBackToMain.Size = new Size(134, 29);
+            buttonBackToMain.TabIndex = 13;
+            buttonBackToMain.Text = "Back to main";
+            buttonBackToMain.UseVisualStyleBackColor = true;
+            buttonBackToMain.Click += buttonBackToMain_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonBackToMain);
             Controls.Add(buttonDelete);
             Controls.Add(comboBoxGames);
             Controls.Add(comboBoxResult);
@@ -191,5 +203,6 @@
         private ComboBox comboBoxResult;
         private ComboBox comboBoxGames;
         private Button buttonDelete;
+        private Button buttonBackToMain;
     }
 }

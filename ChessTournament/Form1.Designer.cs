@@ -32,6 +32,7 @@
             listBox1 = new ListBox();
             textBox1 = new TextBox();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // Button1
@@ -67,15 +68,26 @@
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 4;
-            button2.Text = "Edit";
+            button2.Text = "Edit game";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(319, 322);
+            button3.Name = "button3";
+            button3.Size = new Size(126, 29);
+            button3.TabIndex = 5;
+            button3.Text = "Edit tournament";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(textBox1);
             Controls.Add(listBox1);
@@ -93,5 +105,6 @@
         private ListBox listBox1;
         private TextBox textBox1;
         private Button button2;
+        private Button button3;
     }
 }
