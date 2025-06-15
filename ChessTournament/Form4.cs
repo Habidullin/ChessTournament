@@ -148,6 +148,7 @@ namespace ChessTournament
                 Directory.Move(originalFolderPath, newFolderPath);
             }
             selectedTournament.Save();
+            MessageBox.Show("Tournament saved successfully");
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)

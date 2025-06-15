@@ -36,7 +36,6 @@
             label4 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            textBox3 = new TextBox();
             textBox4 = new TextBox();
             button2 = new Button();
             label5 = new Label();
@@ -48,6 +47,7 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            comboBoxResult = new ComboBox();
             SuspendLayout();
             // 
             // button1
@@ -81,7 +81,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(443, 159);
+            label2.Location = new Point(443, 156);
             label2.Name = "label2";
             label2.Size = new Size(44, 20);
             label2.TabIndex = 5;
@@ -111,6 +111,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 8;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
@@ -118,13 +119,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(125, 27);
             textBox2.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(522, 210);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 10;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox4
             // 
@@ -132,6 +127,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(125, 27);
             textBox4.TabIndex = 11;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // button2
             // 
@@ -167,6 +163,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(257, 27);
             textBox5.TabIndex = 15;
+            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // textBox6
             // 
@@ -174,6 +171,7 @@
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(125, 27);
             textBox6.TabIndex = 16;
+            textBox6.TextChanged += textBox6_TextChanged;
             // 
             // label7
             // 
@@ -190,6 +188,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(125, 27);
             textBox7.TabIndex = 18;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // button3
             // 
@@ -221,11 +220,21 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // comboBoxResult
+            // 
+            comboBoxResult.FormattingEnabled = true;
+            comboBoxResult.Location = new Point(522, 206);
+            comboBoxResult.Name = "comboBoxResult";
+            comboBoxResult.Size = new Size(125, 28);
+            comboBoxResult.TabIndex = 22;
+            comboBoxResult.SelectedIndexChanged += comboBoxResult_SelectedIndexChanged;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBoxResult);
             Controls.Add(button5);
             Controls.Add(button3);
             Controls.Add(button4);
@@ -237,7 +246,6 @@
             Controls.Add(label5);
             Controls.Add(button2);
             Controls.Add(textBox4);
-            Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label4);
@@ -262,7 +270,6 @@
         private Label label4;
         private TextBox textBox1;
         private TextBox textBox2;
-        private TextBox textBox3;
         private TextBox textBox4;
         private Button button2;
         private Label label5;
@@ -274,5 +281,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private ComboBox comboBoxResult;
     }
 }

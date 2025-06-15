@@ -140,6 +140,7 @@ namespace ChessTournament
             LoadTouraments();
             comboBoxTournaments.DataSource = null;
             comboBoxTournaments.DataSource = allLoadedTournaments;
+            comboBoxTournaments.DisplayMember = "Name";
             LoadGames();
         }
 
@@ -182,6 +183,7 @@ namespace ChessTournament
 
             LoadGames();
             ClearSelection();
+            MessageBox.Show("Game edited successfully");
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -190,6 +192,7 @@ namespace ChessTournament
             {
                 tournament.Save();
             }
+            MessageBox.Show("Games saved successfully");
         }
 
         private void textBoxWhite_TextChanged(object sender, EventArgs e)
