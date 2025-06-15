@@ -13,6 +13,18 @@ namespace ChessTournament
         public int AmountOfRounds;
         public int Year;
         public string Name { get; set; }
+        public static string _baseTournamentDirectory;
+
+        static Tournament()
+        {
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            _baseTournamentDirectory
+                 = Path.Combine(appDataPath, "ChessTournamentApp", "Tournaments");
+            if (!Directory.Exists(_baseTournamentDirectory))
+            {
+                Directory.CreateDirectory(_baseTournamentDirectory);
+            }
+        }
         public Tournament(int amountOfRounds, int year, string name)
         {
             AmountOfRounds = amountOfRounds;
@@ -36,8 +48,7 @@ namespace ChessTournament
         public void Save()
         {
             string tournamentFolderName = $"{Name}-{AmountOfRounds}-{Year}";
-            string baseDataDirectory = "ChessTournamentsData";
-            string tournamentDirectoryPath = Path.Combine(baseDataDirectory, tournamentFolderName);
+            string tournamentDirectoryPath = Path.Combine(_baseTournamentDirectory, tournamentFolderName);
             Directory.CreateDirectory(tournamentDirectoryPath);
 
             for (int i = 0; i < Games.Count; i++)
@@ -50,8 +61,7 @@ namespace ChessTournament
 
         public static Tournament Load(string tournamentFolderName)
         {
-            string baseDataDirectory = "ChessTournamentsData";
-            string tournamentDirectoryPath = Path.Combine(baseDataDirectory, tournamentFolderName);
+            string tournamentDirectoryPath = Path.Combine(_baseTournamentDirectory, tournamentFolderName);
             if (!Directory.Exists(tournamentDirectoryPath))
             {
                 return null;
@@ -102,13 +112,12 @@ namespace ChessTournament
         }
         public static List<string> ListAvailableTournaments()
         {
-            string baseDataDirectory = "ChessTournamentsData"; 
-            if (!Directory.Exists(baseDataDirectory))
+            if (!Directory.Exists(_baseTournamentDirectory))
             {
                 return new List<string>(); 
             }
 
-            return Directory.GetDirectories(baseDataDirectory).Select(Path.GetFileName).ToList();
+            return Directory.GetDirectories(_baseTournamentDirectory).Select(Path.GetFileName).ToList();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ChessTournament
 {
@@ -62,9 +63,19 @@ namespace ChessTournament
         private void comboBoxTournaments_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedTournament = (Tournament)comboBoxTournaments.SelectedItem;
-            textBoxName.Text = selectedTournament.Name;
-            numericUpDownYear.Value = selectedTournament.Year;
-            numericUpDownAmountOfRounds.Value = selectedTournament.AmountOfRounds;
+            if (selectedTournament != null) 
+            {
+                textBoxName.Text = selectedTournament.Name;
+                numericUpDownYear.Value = selectedTournament.Year;
+                numericUpDownAmountOfRounds.Value = selectedTournament.AmountOfRounds;
+            }
+            else
+            {
+                textBoxName.Text = string.Empty;
+                numericUpDownYear.Value = numericUpDownYear.Minimum;
+                numericUpDownAmountOfRounds.Value = numericUpDownAmountOfRounds.Minimum;
+            }
+
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -87,7 +98,7 @@ namespace ChessTournament
                 label2.ForeColor = Color.Red;
                 return;
             }
-            string originalFolderPath = Path.Combine("ChessTournamentsData",
+            string originalFolderPath = Path.Combine(Tournament._baseTournamentDirectory,
                     $"{selectedTournament.Name}-{selectedTournament.AmountOfRounds}-{selectedTournament.Year}");
             selectedTournament.Name = textBoxName.Text;
             selectedTournament.Year = (int)numericUpDownYear.Value;
@@ -122,7 +133,7 @@ namespace ChessTournament
                 }
                 selectedTournament.AmountOfRounds = newAmountOfRounds;
             }
-            string newFolderPath = Path.Combine("ChessTournamentsData",
+            string newFolderPath = Path.Combine(Tournament._baseTournamentDirectory,
                     $"{textBoxName.Text}-{newAmountOfRounds}-{numericUpDownYear.Value}");
             if (originalFolderPath != newFolderPath)
             {
@@ -164,17 +175,30 @@ namespace ChessTournament
             {
                 try
                 {
-                    string folderPath = Path.Combine("ChessTournamentsData",
+                    string folderPath = Path.Combine(Tournament._baseTournamentDirectory,
                                             $"{selectedTournament.Name}-{selectedTournament.AmountOfRounds}-{selectedTournament.Year}");
                     if (Directory.Exists(folderPath))
                     {
                         Directory.Delete(folderPath, true);
                     }
+                    MessageBox.Show("Deleted successfully");
                     LoadTouraments();
+                    comboBoxTournaments.DataSource = null;
+                    comboBoxTournaments.DataSource = allLoadedTournaments;
+                    comboBoxTournaments.DisplayMember = "Name";
+                    tournamentNames.Clear();
+                    foreach (Tournament tournament in allLoadedTournaments)
+                    {
+                        tournamentNames.Add(tournament.Name);
+                    }
+                    selectedTournament = null;
+                    textBoxName.Clear();
+                    numericUpDownYear.Value = numericUpDownYear.Minimum;
+                    numericUpDownAmountOfRounds.Value = numericUpDownAmountOfRounds.Minimum;
                 }
                 catch (IOException ex)
                 {
-                    MessageBox.Show($"Cannot delete tournament folder. It might be in use by OneDrive or another program.\n\nError: {ex.Message}\n\nTry:\n1. Pause OneDrive sync\n2. Close any programs using the files\n3. Try again");
+                    MessageBox.Show($"Cannot delete tournament folder.\nError: {ex.Message}");
                 }
             }
 
