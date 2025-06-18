@@ -183,7 +183,7 @@
             Controls.Add(buttonSave);
             Controls.Add(buttonEdit);
             Name = "Form3";
-            Text = "Edit";
+            Text = "Edit game";
             Load += Form3_Load;
             ResumeLayout(false);
             PerformLayout();

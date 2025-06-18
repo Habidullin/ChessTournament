@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace ChessTournament
 {
+    // Клас, що представляє шаховий турнір з множиною ігор, організованих по турах.
+    // Забезпечує функції створення, збереження та завантаження турнірів з файлової системи.
     public class Tournament
     {
+        // Список турів, кожен з яких містить список ігор для цього туру
         public List<List<Game>> Games;
+        // Загальна кількість турів в турнірі
         public int AmountOfRounds;
+        // Рік проведення турніру
         public int Year;
+        // Назва турніру
         public string Name { get; set; }
+        // Базова директорія для зберігання всіх турнірів в системі
         public static string _baseTournamentDirectory;
 
         static Tournament()
