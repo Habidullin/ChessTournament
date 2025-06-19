@@ -147,7 +147,7 @@
             Controls.Add(comboBoxTournaments);
             Controls.Add(buttonBackToMain);
             Name = "Form4";
-            Text = "Edit game";
+            Text = "Edit tournamet";
             Load += Form4_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDownYear).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAmountOfRounds).EndInit();
